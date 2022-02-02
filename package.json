@@ -1,0 +1,12 @@
+{
+    "name": "name",
+    "description": "description",
+    "authors": "authTazor",
+    "version": "1.0.0",
+    "dependencies": {
+        "prettier": "^2.5.1"
+    },
+    "scripts": {
+        "prettier": "prettier -w ./*.js"
+    }
+}
