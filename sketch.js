@@ -1,12 +1,29 @@
+const SPACEBAR = 32;
+let spaceshipImg;
+let monsterImg;
+let spaceship;
+let bullets = [];
+let monsters = [];
+function preload() {
+  spaceshipImg = loadImage("./spaceship.png");
+  monsterImg = loadImage("./monster.png");
+}
 function setup() {
-  createCanvas(1000, 1000);
+  createCanvas(500, 500);
+  background(47, 79, 79);
+  spaceship = new Spaceship(spaceshipImg);
 }
 
-function draw() {
-  if (mouseIsPressed) {
-    fill(0);
-  } else {
-    fill(255);
+function keyPressed () {
+  if(keyCode === SPACEBAR) {
+    bullets.push(new Bullet(spaceship.dir + spaceship.spaceWidth/2,height - spaceship.spaceHeight, 20))
   }
-  ellipse(mouseX, mouseY, 80, 80);
+}
+
+
+function draw() {
+  background(0);
+  noStroke();
+  bullets.forEach(b => b.show());
+  spaceship.show();
 }
