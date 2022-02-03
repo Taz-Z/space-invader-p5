@@ -18,7 +18,7 @@ class Monster {
       this.y += this.height;
     }
 
-    this.x += this.forward ? 50 : -50;
+    this.x += this.forward ? 20 : -20;
     image(this.img, this.x, this.y, this.width, this.height);
   }
 
