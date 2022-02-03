@@ -4,14 +4,16 @@ let monsterImg;
 let spaceship;
 let bullets = [];
 let monsters = [];
+const monsterSpacing = 60;
 function preload() {
   spaceshipImg = loadImage("./spaceship.png");
   monsterImg = loadImage("./monster.png");
 }
 function setup() {
   createCanvas(500, 500);
-  background(47, 79, 79);
+  frameRate(30);
   spaceship = new Spaceship(spaceshipImg);
+  monsters.push(new Monster(monsterImg, monsterSpacing))
 }
 
 function keyPressed () {
@@ -22,8 +24,15 @@ function keyPressed () {
 
 
 function draw() {
+  // if(!(frameCount % 60)) {
+  //   for(i = 0; i < 5; i++) {
+  //     monsters.push(new Monster(monsterImg, i * monsterSpacing))
+  //   }
+  // }
   background(0);
   noStroke();
+  monsters.forEach(m => m.show());
+
   bullets.forEach(b => b.show());
   spaceship.show();
 }
