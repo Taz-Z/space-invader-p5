@@ -1,17 +1,17 @@
 class Spaceship {
-    constructor(img) {
-        this.spaceWidth = 70;
-        this.spaceHeight = 40;
-        this.dir = height/2;
-        this.img = img;
+  constructor(img) {
+    this.width = 70;
+    this.height = 40;
+    this.x = height / 2 - this.width/2;
+    this.y = height - this.height;
+    this.img = img;
+  }
 
-    }
-
-    show() {
-        if (keyIsDown(LEFT_ARROW)) this.dir -= 5;
-        if (keyIsDown(RIGHT_ARROW)) this.dir += 5; 
-        if(this.dir < 0) this.dir = 0;
-        if(this.dir > width - this.spaceWidth) this.dir = width - this.spaceWidth;
-        image(this.img, this.dir, height - this.spaceHeight, this.spaceWidth, this.spaceHeight);
-    }
+  show() {
+    if (keyIsDown(LEFT_ARROW)) this.x -= 5;
+    if (keyIsDown(RIGHT_ARROW)) this.x += 5;
+    if (this.x < 0) this.x = 0;
+    if (this.x > width - this.width) this.x = width - this.width;
+    image(this.img, this.x, this.y, this.width, this.height);
+  }
 }

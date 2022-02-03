@@ -1,25 +1,28 @@
 class Monster {
-    constructor(img, offset) {
-        this.width = 60;
-        this.height = 40;
-        this.y = 10;
-        this.dir = height - this.width - offset;
-        this.img = img;
-        this.forward = true;
+  constructor(img, offset) {
+    this.width = 60;
+    this.height = 40;
+    this.y = 10;
+    this.x = height - this.width - offset;
+    this.img = img;
+    this.forward = true;
+  }
 
+  show() {
+    if (this.x < 0) {
+      this.forward = true;
+      this.y += this.height;
+    }
+    if (this.x >= width - this.width) {
+      this.forward = false;
+      this.y += this.height;
     }
 
-    show() {
-        if(this.dir < 0) {
-            this.forward = true;
-            this.y += this.height;
-        }
-        if(this.dir >= width - this.width) {
-            this.forward = false;
-            this.y += this.height;
-        }
+    this.x += this.forward ? 50 : -50;
+    image(this.img, this.x, this.y, this.width, this.height);
+  }
 
-        this.dir += this.forward ? 5 : -5;
-        image(this.img, this.dir, this.y, this.width, this.height);
-    }
+  touchedEnd() {
+    return this.y >= height - this.height;
+  }
 }
